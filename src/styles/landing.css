@@ -1,22 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap");
 
 body {
-  font-family: 'Solway', serif;
+  font-family: "Solway", serif;
   background-color: #faa6a4;
   color: black;
 }
 
-.main-page-container{
+.main-page-container {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   justify-items: center;
+  height: 100vh;
 }
 
-.solver-container{
-  width:320px;
-  height:320px;
+.solver-container {
+  width: 420px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.white-box {
+  width: 250px;
+  height: 250px;
   background-color: white;
   border: 2px solid black;
+}
+
+.solution-suggestions h3 {
+  text-decoration: underline;
 }

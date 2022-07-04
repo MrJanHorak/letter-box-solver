@@ -6,6 +6,31 @@ body {
   color: black;
 }
 
+input {
+  border-color:#c68482 ;
+  border-width: 0.1em ;
+  margin: 10px 0 10px 0;
+  background-color: #faa6a4;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 70px;
+  width: 246px;
+  border-radius: 1.5em;
+}
+
+.button {
+  border-radius: 1.5em;
+  height: 3em;
+  width: 136px;
+  align-content: center;
+  margin-top: 40px;
+  border: 1px solid black;
+  font-size: 1em;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.01em;
+  background-color: black;
+}
+
 .main-page-container {
   display: flex;
   flex-direction: column;
@@ -27,9 +52,21 @@ body {
   width: 250px;
   height: 250px;
   background-color: white;
-  border: 2px solid black;
+  border: 3px solid black;
 }
 
 .solution-suggestions h3 {
   text-decoration: underline;
 }
+
+.middle-row {
+  display: flex;
+}
+
+.middle-row input {
+  /* width: 325px; */
+  width: 25px;
+  margin: 0 12px 0 12px;
+  /* transform: rotate(90deg);
+  transform-origin: 75px;*/
+} 

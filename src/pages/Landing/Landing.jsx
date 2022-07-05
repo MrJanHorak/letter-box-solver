@@ -21,8 +21,8 @@ const Landing = () => {
         <h1>Letter Boxed Solver</h1>
       </div>
       <form className="letters-input">
-        <div className="solver-container">
           <h3>letter input goes here</h3>
+        <div className="solver-container">
           <div id="top-row-container">
             <label id="top-row-label">
               {topRow}

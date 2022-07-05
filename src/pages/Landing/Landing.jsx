@@ -31,7 +31,7 @@ const Landing = () => {
                 id="top-row"
                 type="text"
                 name="top-row"
-                maxLength={4}
+                maxLength={3}
                 required
                 autoComplete="off"
                 onChange={handleChange}
@@ -46,7 +46,7 @@ const Landing = () => {
                   id="left-side"
                   type="text"
                   name="left-side"
-                  maxLength={4}
+                  maxLength={3}
                   required
                   autoComplete="off"
                   onChange={handleChange}
@@ -61,7 +61,7 @@ const Landing = () => {
                   id="right-side"
                   type="text"
                   name="right-side"
-                  maxLength={4}
+                  maxLength={3}
                   autoComplete="off"
                   onChange={handleChange}
                 />
@@ -76,7 +76,7 @@ const Landing = () => {
                 id="bottom-row"
                 type="text"
                 name="bottom-row"
-                maxLength={4}
+                maxLength={3}
                 required
                 autoComplete="off"
                 onChange={handleChange}

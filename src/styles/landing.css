@@ -7,15 +7,15 @@ body {
 }
 
 input {
-  border-color:#c68482 ;
-  border-width: 0.1em ;
+  border-color: #c68482;
+  border-width: 0.1em;
   margin: 10px 0 10px 0;
-  background-color: #faa6a4;
-  color: white;
+  background-color: transparent;
+  color: transparent;
   font-weight: 400;
-  letter-spacing: 70px;
   width: 246px;
   border-radius: 1.5em;
+  text-align: center;
 }
 
 .button {
@@ -27,6 +27,7 @@ input {
   border: 1px solid black;
   font-size: 1em;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
   letter-spacing: 0.01em;
   background-color: black;
 }
@@ -63,10 +64,92 @@ input {
   display: flex;
 }
 
-.middle-row input {
-  /* width: 325px; */
+#left-side-container {
+  position: relative;
+}
+
+#left-side-label {
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  min-height: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#left-side-container input {
+  position: absolute;
+  height: 325px;
   width: 25px;
   margin: 0 12px 0 12px;
-  /* transform: rotate(90deg);
-  transform-origin: 75px;*/
-} 
+  background: transparent;
+}
+
+#right-side-container {
+  position: relative;
+}
+
+#right-side-label {
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  min-height: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#right-side-container input {
+  position: absolute;
+  height: 325px;
+  width: 25px;
+  margin: 0 12px 0 12px;
+  background: transparent;
+}
+
+#top-row-container {
+  position: relative;
+}
+
+#top-row-label {
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#top-row-container input {
+  /* position: absolute; */
+  height: 25px;
+  width: 325px;
+  background: transparent;
+}
+
+#bottom-row-container {
+  position: relative;
+}
+
+#bottom-row-label {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#bottom-row-container input {
+  /* position: absolute; */
+  height: 25px;
+  width: 325px;
+  background: transparent;
+}

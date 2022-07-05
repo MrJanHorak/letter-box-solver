@@ -7,6 +7,12 @@ const Landing = () => {
   const [topRow, setTopRow] = useState("");
   const [rightRow, setRightRow] = useState("");
   const [bottomRow, setBottomRow] = useState("");
+  const [message, setMessage] = useState("Input letters here");
+  let top,
+    left,
+    right,
+    bottom,
+    allSubmittedLetters = [];
 
   const handleChange = (e) => {
     if (e.target.name === "left-side") setLeftRow(e.target.value);
@@ -15,13 +21,30 @@ const Landing = () => {
     if (e.target.name === "bottom-row") setBottomRow(e.target.value);
   };
 
+  const handleSubmit = () => {
+    console.log("Handeling Submit!");
+    top = topRow.split("");
+    left = leftRow.split("");
+    right = rightRow.split("");
+    bottom = bottomRow.split("");
+    allSubmittedLetters = top.concat(left, right, bottom);
+    let letterSet = new Set(allSubmittedLetters);
+    console.log("SET length", letterSet.size);
+    if (letterSet.size !== 12) {
+      console.log("*** WARNING! SET TOO SHORT ***");
+      setMessage("No double letters allowed!");
+    }
+    console.log("ALL LETTERS:", allSubmittedLetters);
+    console.log("SET OF LETTERS:", letterSet);
+  };
+
   return (
     <div className="main-page-container">
       <div className="title-container">
         <h1>Letter Boxed Solver</h1>
       </div>
-      <form className="letters-input">
-          <h3>letter input goes here</h3>
+      <form className="letters-input" onSubmit={handleSubmit}>
+        <h3>{message}</h3>
         <div className="solver-container">
           <div id="top-row-container">
             <label id="top-row-label">
@@ -91,7 +114,6 @@ const Landing = () => {
           value="Submit"
           required
           autoComplete="off"
-          onChange={handleChange}
         />
       </form>
       <div className="solution-suggestions">

@@ -1,42 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../../styles/landing.css";
 
 const Landing = () => {
-  const [leftRow, setLeftRow] = useState("");
-  const [topRow, setTopRow] = useState("");
-  const [rightRow, setRightRow] = useState("");
-  const [bottomRow, setBottomRow] = useState("");
+  const [leftRow, setLeftRow] = useState([]);
+  const [topRow, setTopRow] = useState([]);
+  const [rightRow, setRightRow] = useState([]);
+  const [bottomRow, setBottomRow] = useState([]);
   const [message, setMessage] = useState("Input letters here");
-  let top,
-    left,
-    right,
-    bottom,
-    allSubmittedLetters = [];
+  let allSubmittedLetters = [];
+
+  useEffect(() => {}, []);
+  const onlyLetters = (str) => {
+    return /^[a-zA-Z]{1,3}$/.test(str);
+  };
+
+  const resetValue = (e) => {
+    if (e.target.name === "left-side") setLeftRow([]);
+    if (e.target.name === "right-side") setRightRow([]);
+    if (e.target.name === "top-row") setTopRow([]);
+    if (e.target.name === "bottom-row") setBottomRow([]);
+  };
 
   const handleChange = (e) => {
-    if (e.target.name === "left-side") setLeftRow(e.target.value);
-    if (e.target.name === "right-side") setRightRow(e.target.value);
-    if (e.target.name === "top-row") setTopRow(e.target.value);
-    if (e.target.name === "bottom-row") setBottomRow(e.target.value);
+    if (onlyLetters(e.target.value)) {
+      if (e.target.name === "left-side") setLeftRow(e.target.value);
+      if (e.target.name === "right-side") setRightRow(e.target.value);
+      if (e.target.name === "top-row") setTopRow(e.target.value);
+      if (e.target.name === "bottom-row") setBottomRow(e.target.value);
+    } else {
+      setMessage("Please only enter letters");
+    }
   };
 
-  const handleSubmit = () => {
-    console.log("Handeling Submit!");
-    top = topRow.split("");
-    left = leftRow.split("");
-    right = rightRow.split("");
-    bottom = bottomRow.split("");
-    allSubmittedLetters = top.concat(left, right, bottom);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    allSubmittedLetters = topRow
+      .split("")
+      .concat(leftRow.split(""), rightRow.split(""), bottomRow.split(""));
     let letterSet = new Set(allSubmittedLetters);
-    console.log("SET length", letterSet.size);
     if (letterSet.size !== 12) {
-      console.log("*** WARNING! SET TOO SHORT ***");
       setMessage("No double letters allowed!");
+    } else {
+      setMessage("searching ...");
     }
-    console.log("ALL LETTERS:", allSubmittedLetters);
-    console.log("SET OF LETTERS:", letterSet);
   };
+
+  console.log("TOP ROW", topRow);
+  console.log("LEFT ROW", leftRow);
+  console.log("RIGHT ROW", rightRow);
+  console.log("BOTTOM ROW", bottomRow);
 
   return (
     <div className="main-page-container">
@@ -57,6 +70,8 @@ const Landing = () => {
                 maxLength={3}
                 required
                 autoComplete="off"
+                value={topRow}
+                onFocus={resetValue}
                 onChange={handleChange}
               />
             </label>
@@ -72,6 +87,8 @@ const Landing = () => {
                   maxLength={3}
                   required
                   autoComplete="off"
+                  value={leftRow}
+                  onFocus={resetValue}
                   onChange={handleChange}
                 />
               </label>
@@ -86,6 +103,8 @@ const Landing = () => {
                   name="right-side"
                   maxLength={3}
                   autoComplete="off"
+                  value={rightRow}
+                  onFocus={resetValue}
                   onChange={handleChange}
                 />
               </label>
@@ -102,11 +121,12 @@ const Landing = () => {
                 maxLength={3}
                 required
                 autoComplete="off"
+                onFocus={resetValue}
+                value={bottomRow}
                 onChange={handleChange}
               />
             </label>
           </div>
-          <h3>letter input goes here</h3>
         </div>
         <input
           className="button"

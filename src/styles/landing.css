@@ -70,7 +70,6 @@ input {
 #top-row-container {
   position: relative;
   margin-bottom: 14px;
-  /* position: fixed; */
   display: flex;
   flex-direction: column;
 }

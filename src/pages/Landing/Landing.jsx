@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Solver from "../../js/solver";
 
 import "../../styles/landing.css";
 
@@ -10,7 +11,6 @@ const Landing = () => {
   const [message, setMessage] = useState("Input letters here");
   let allSubmittedLetters = [];
 
-  useEffect(() => {}, []);
   const onlyLetters = (str) => {
     return /^[a-zA-Z]{1,3}$/.test(str);
   };
@@ -43,13 +43,9 @@ const Landing = () => {
       setMessage("No double letters allowed!");
     } else {
       setMessage("searching ...");
+      Solver(topRow, leftRow,rightRow,bottomRow)
     }
   };
-
-  console.log("TOP ROW", topRow);
-  console.log("LEFT ROW", leftRow);
-  console.log("RIGHT ROW", rightRow);
-  console.log("BOTTOM ROW", bottomRow);
 
   return (
     <div className="main-page-container">

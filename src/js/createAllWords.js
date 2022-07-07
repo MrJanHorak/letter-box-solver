@@ -1,14 +1,19 @@
-const getAllWords = (lettersArray, cleaned_list) => {
-
+const getAllWords = (topRow, leftrow, rightRow, bottomRow, cleaned_list) => {
+  let lettersArray = topRow + leftrow + rightRow + bottomRow;
+  let arrayOfRows = [
+    new Set(topRow),
+    new Set(leftrow),
+    new Set(rightRow),
+    new Set(bottomRow),
+  ];
+  let letters = [];
   console.log("in get all words cleaned_list", cleaned_list);
+  console.log(topRow, leftrow, rightRow, bottomRow);
   console.log(lettersArray);
 
   lettersArray = new Set(lettersArray.split(""));
 
   console.log(lettersArray);
-
-  let words = {};
-  let possible_words = {};
 
   // Instead of creating every combination of letters and
   // comparing to see which combination of letters matches
@@ -21,7 +26,8 @@ const getAllWords = (lettersArray, cleaned_list) => {
     let compareSet = new Set(
       [...wordSet].filter((letter) => !lettersArray.has(letter))
     );
-    if (compareSet.size === 0) {
+
+    if (compareSet.size !== 0) {
       delete cleaned_list[word];
     }
   }
@@ -36,24 +42,36 @@ const getAllWords = (lettersArray, cleaned_list) => {
   // game restriction of not allowing letters on the same side of the
   // square to be directly next to each other in the word.
 
-  for (let word in words) {
-    if (words[word] !== cleaned_list[word]) {
-      delete words[word];
-    }
+  const takeOutWords = (word) => {
+    letters = word.split("");
+    let num = 1;
+    arrayOfRows.forEach((row) => {
+      while (num < letters.length) {
+        if (row.has(letters[num]) && row.has(letters[num - 1])) {
+          delete cleaned_list[word];
+          num = letters.length;
+        } else {
+          num += 1;
+        }
+      }
+    });
+  };
+
+  for (let word in cleaned_list) {
+    takeOutWords(word);
   }
 
-  console.log("Number of potential words: ", Object.keys(words).length);
+  // after making sure all the words in the list are possible
+  // the only thing left is to match up suggestions
+  // where the last letter of one word is the beginning of the next
+  // and only until all letters are used at least once
 
-  // }
-
-  // possible_words = words.filter(word => cleaned_list[word]===true);
-
-  console.log(
-    "YOUR CURRENT LETTERS CAN CREATE THIS MANY WORDS: ",
-    possible_words.length
-  );
   
-  return possible_words;
+
+  console.log("Number of potential words: ", Object.keys(cleaned_list).length);
+  console.log("Get all words cleaned_list", cleaned_list);
+
+  return cleaned_list;
 };
 
 export default getAllWords;

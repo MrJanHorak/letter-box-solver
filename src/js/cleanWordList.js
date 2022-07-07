@@ -5,11 +5,6 @@
 // words with double letters allowed.
 
 const cleanWordList = (wordList) => {
-  console.log(
-    "Number of words in original list: ",
-    Object.keys(wordList).length
-  );
-
   let letters = [];
 
   for (let word in wordList) {
@@ -17,8 +12,6 @@ const cleanWordList = (wordList) => {
       delete wordList[word];
     }
   }
-
-  console.log("Valid word list length: ", Object.keys(wordList).length);
 
   for (let word in wordList) {
     letters = word.split("");
@@ -32,8 +25,6 @@ const cleanWordList = (wordList) => {
       }
     }
   }
-
-  console.log("Valid word list length: ", Object.keys(wordList).length);
 
   return wordList;
 };

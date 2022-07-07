@@ -3,15 +3,16 @@
 // There are no words shorter than 3 characters and no words with double letters allowed.
 
 const cleanWordList = (wordList) => {
-
-console.log("Number of words in original list: ", Object.keys(wordList).length)
-
+  console.log(
+    "Number of words in original list: ",
+    Object.keys(wordList).length
+  );
 
   let letters = [];
-  
+
   for (let word in wordList) {
     if (word.length < 3) {
-      delete wordList[word]
+      delete wordList[word];
     }
   }
 
@@ -22,7 +23,7 @@ console.log("Number of words in original list: ", Object.keys(wordList).length)
     let num = 1;
     while (num < letters.length) {
       if (letters[num] === letters[num - 1]) {
-        delete  wordList[word]
+        delete wordList[word];
         num = letters.length;
       } else {
         num += 1;
@@ -30,11 +31,9 @@ console.log("Number of words in original list: ", Object.keys(wordList).length)
     }
   }
 
-console.log("Valid word list length: ", Object.keys(wordList).length);
+  console.log("Valid word list length: ", Object.keys(wordList).length);
 
-
-  localStorage.setItem('cleaned_list', wordList)
   return wordList;
 };
 
-export default cleanWordList
+export default cleanWordList;

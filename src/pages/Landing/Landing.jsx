@@ -165,6 +165,7 @@ const Landing = () => {
                   value={leftRow}
                   onFocus={resetValue}
                   onChange={handleChange}
+                  placeholder="jkl"
                 />
               </label>
             </div>
@@ -181,6 +182,7 @@ const Landing = () => {
                   value={rightRow}
                   onFocus={resetValue}
                   onChange={handleChange}
+                  placeholder="def"
                 />
               </label>
             </div>

@@ -11,9 +11,28 @@ input {
   border-width: 0.1em;
   background-color: transparent;
   color: transparent;
-  font-weight: 400;
-  border-radius: 1.5em;
+  border-radius: 1.4em;
+}
+
+::placeholder {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 34px;
+  color: rgba(3, 3, 3, 0.3);
+  letter-spacing: 1.7em;
+  text-indent: 1.2em;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 34px;
+  color: white;
+  letter-spacing: 1.7em;
   text-align: center;
+  width: 250px;
+  height: 40px;
 }
 
 .main-page-container {
@@ -31,11 +50,11 @@ input {
 }
 
 .solver-container {
-  width: 350px;
-  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 350px;
+  height: 400px;
 }
 
 .middle-row {
@@ -43,24 +62,24 @@ input {
 }
 
 .white-box {
+  background-color: white;
+  border: 3px solid black;
   margin: 0px 15px 15px 15px;
   width: 250px;
   height: 250px;
-  background-color: white;
-  border: 3px solid black;
 }
 
 .button {
-  border-radius: 1.5em;
-  height: 3em;
-  width: 136px;
-  align-content: center;
+  background-color: black;
   border: 1px solid black;
+  border-radius: 1.5em;
+  align-content: center;
   font-size: 1em;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
   letter-spacing: 0.01em;
-  background-color: black;
+  width: 136px;
+  height: 3em;
 }
 
 .solution-suggestions h3 {
@@ -69,28 +88,21 @@ input {
 
 #top-row-container {
   position: relative;
-  margin-bottom: 14px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 14px;
 }
 
 #top-row-label {
-  color: black;
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  height: 25px;
-  width: 250px;
+  text-indent: 1.2em;
 }
 
 #top-row-container input {
   position: absolute;
-  height: 25px;
-  width: 250px;
   background: transparent;
+  height: 40px;
+  width: 250px;
+
 }
 
 #left-side-container {
@@ -98,26 +110,20 @@ input {
 }
 
 #left-side-label {
-  color: black;
-  width: fit-content;
-  height: fit-content;
-  min-height: 50px;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
   height: 250px;
-  width: 25px;
+  width: 40px;
+  text-indent: 0.3em;
 }
 
 #left-side-container input {
   position: absolute;
-  height: 250px;
-  width: 25px;
-  margin: 0 12px 0 12px;
   background: transparent;
+  margin: 105px 12px 0 12px;
+  height: 40px;
+  width: 250px;
+  transform: rotate(-90deg);
 }
 
 #right-side-container {
@@ -125,26 +131,30 @@ input {
 }
 
 #right-side-label {
-  color: black;
-  width: fit-content;
-  height: fit-content;
-  min-height: 50px;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
   height: 250px;
-  width: 25px;
+  width: 40px;
+  text-indent: 0.3em;
 }
 
 #right-side-container input {
   position: absolute;
-  height: 250px;
-  width: 25px;
-  margin: 0 12px 0 12px;
   background: transparent;
+  margin: 105px 12px 0 12px;
+  height: 40px;
+  width: 250px;
+  transform: rotate(90deg);
+}
+
+#right-side-container input::placeholder {
+  padding-top: 34px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 34px;
+  color: rgba(3, 3, 3, 0.3);
+  letter-spacing: 1.7em;
+  text-indent: 1.2em;
+  text-orientation:sideways;
 }
 
 #bottom-row-container {
@@ -153,18 +163,13 @@ input {
 
 #bottom-row-label {
   position: relative;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  height: 25px;
   width: 250px;
+  text-indent: 1.2em;
 }
 
 #bottom-row-container input {
   position: absolute;
-  height: 25px;
-  width: 250px;
   background: transparent;
+  height: 40px;
+  width: 250px;
 }

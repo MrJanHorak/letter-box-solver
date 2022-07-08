@@ -1,14 +1,16 @@
 const twoWordSolutions = (lettersArraySet, wordList) => {
   let twoWordSolutions = [];
+  let lastLetter, firstLetter;
+  let twoWordSet, compareSet;
 
   for (let word in wordList) {
-    let lastLetter = word.slice(-1);
+    lastLetter = word.slice(-1);
     for (let nextWord in wordList) {
       if (nextWord !== word) {
-        let firstLetter = nextWord.charAt(0);
-        let twoWordSet = new Set((word + nextWord).split(""));
+        firstLetter = nextWord.charAt(0);
+        twoWordSet = new Set((word + nextWord).split(""));
 
-        let compareSet = new Set(
+        compareSet = new Set(
           [...lettersArraySet].filter((letter) => !twoWordSet.has(letter))
         );
 
@@ -16,9 +18,6 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
           twoWordSolutions.push([word, nextWord]);
         }
       }
-    }
-    if (new Set(word) === lettersArraySet) {
-      twoWordSolutions.push(word);
     }
   }
 

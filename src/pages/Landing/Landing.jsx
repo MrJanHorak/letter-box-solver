@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import Solver from "../../js/solver";
 
+//assests
+import words from "../../data/words_dictionary.json";
+import cleanWordList from "../../js/cleanWordList";
+import findAllPossibleWords from "../../js/findAllPossibleWords";
+import oneWordSolutions from "../../js/oneWordSolutions";
+import twoWordSolutions from "../../js/twoWordSolutions";
+import threeWordSolutions from "../../js/threeWordSolutions";
+
+// style
 import "../../styles/landing.css";
 
 const Landing = () => {
@@ -9,7 +17,11 @@ const Landing = () => {
   const [rightRow, setRightRow] = useState([]);
   const [bottomRow, setBottomRow] = useState([]);
   const [message, setMessage] = useState("Input letters here");
+  const [oneWord, setOneWord] = useState([]);
+  const [twoWord, setTwoWord] = useState([]);
+  const [threeWord, setThreeWord] = useState([]);
   let allSubmittedLetters = [];
+  let lettersArraySet;
 
   const onlyLetters = (str) => {
     return /^[a-zA-Z]{1,3}$/.test(str);
@@ -38,14 +50,81 @@ const Landing = () => {
     allSubmittedLetters = topRow
       .split("")
       .concat(leftRow.split(""), rightRow.split(""), bottomRow.split(""));
-    let letterSet = new Set(allSubmittedLetters);
-    if (letterSet.size !== 12) {
+    lettersArraySet = new Set(allSubmittedLetters);
+    if (lettersArraySet.size !== 12) {
       setMessage("No double letters allowed!");
     } else {
       setMessage("searching ...");
-      Solver(topRow, leftRow,rightRow,bottomRow)
+      Solver(topRow, leftRow, rightRow, bottomRow);
     }
   };
+
+  const Solver = (topRow, leftrow, rightRow, bottomRow) => {
+    let one, two, three;
+    let cleaned_list = cleanWordList(words);
+    let potentialWords = findAllPossibleWords(
+      topRow,
+      leftrow,
+      rightRow,
+      bottomRow,
+      lettersArraySet,
+      cleaned_list
+    );
+
+    console.log(
+      "Number of potential words to use: ",
+      Object.keys(potentialWords).length
+    );
+
+    one = oneWordSolutions(lettersArraySet, potentialWords);
+    setOneWord(one);
+    console.log("One Word solutions", one);
+    two = twoWordSolutions(lettersArraySet, potentialWords);
+    setTwoWord(two);
+    console.log("Two Word solutions", two);
+    three = threeWordSolutions(lettersArraySet, potentialWords);
+    setThreeWord(three);
+    console.log("Three Word solutions", three);
+  };
+
+  const solutionOne = () => {
+    if(oneWord.length){
+      oneWord.map((word, i) => {
+        return (<div className="suggestion" key={1+i}>{word}</div>)
+      }) 
+    } else {
+      return (
+        <div className="suggestion" key={1}></div>
+      )
+    }  
+  }    
+  
+  const solutionTwo = () => {
+    if(twoWord.length){
+      twoWord.map((words, i) => {
+        return (<div className="suggestion" key={2+i}>{words}</div>)
+      }) 
+    } else {
+      return (
+        <div className="suggestion" key={2}></div>
+      )
+    }  
+  }
+
+  const solutionThree = () => {
+    if(threeWord.length){
+      threeWord.map((words, i) => {
+        return (<div className="suggestion" key={3+i}>{words}</div>)
+      }) 
+    } else {
+      return (
+        <div className="suggestion" key={3}></div>
+      )
+    }  
+  }    
+  
+
+
 
   return (
     <div className="main-page-container">
@@ -134,6 +213,9 @@ const Landing = () => {
       </form>
       <div className="solution-suggestions">
         <h3> Suggestions</h3>
+        <div className="one-word-solutions">{solutionOne()}</div>
+        <div className="two-word-solutions">{solutionTwo()}</div>
+        <div className="three-word-solutions">{solutionThree()}</div>
       </div>
     </div>
   );

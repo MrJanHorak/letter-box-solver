@@ -88,43 +88,46 @@ const Landing = () => {
   };
 
   const solutionOne = () => {
-    if(oneWord.length){
+    if (oneWord.length) {
       oneWord.map((word, i) => {
-        return (<div className="suggestion" key={1+i}>{word}</div>)
-      }) 
+        return (
+          <div className="suggestion" key={1 + i}>
+            {word}
+          </div>
+        );
+      });
     } else {
-      return (
-        <div className="suggestion" key={1}></div>
-      )
-    }  
-  }    
-  
+      return <div className="suggestion" key={1}></div>;
+    }
+  };
+
   const solutionTwo = () => {
-    if(twoWord.length){
+    if (twoWord.length) {
       twoWord.map((words, i) => {
-        return (<div className="suggestion" key={2+i}>{words}</div>)
-      }) 
+        return (
+          <div className="suggestion" key={2 + i}>
+            {words}
+          </div>
+        );
+      });
     } else {
-      return (
-        <div className="suggestion" key={2}></div>
-      )
-    }  
-  }
+      return <div className="suggestion" key={2}></div>;
+    }
+  };
 
   const solutionThree = () => {
-    if(threeWord.length){
+    if (threeWord.length) {
       threeWord.map((words, i) => {
-        return (<div className="suggestion" key={3+i}>{words}</div>)
-      }) 
+        return (
+          <div className="suggestion" key={3 + i}>
+            {words}
+          </div>
+        );
+      });
     } else {
-      return (
-        <div className="suggestion" key={3}></div>
-      )
-    }  
-  }    
-  
-
-
+      return <div className="suggestion" key={3}></div>;
+    }
+  };
 
   return (
     <div className="main-page-container">
@@ -169,7 +172,20 @@ const Landing = () => {
                 />
               </label>
             </div>
-            <div className="white-box"></div>
+            <div className="white-box">
+              <div className="row-of-circles" id="top-row-circles">
+              ⚪⚪⚪
+              </div>
+              <div className="row-of-circles" id="left-row-circles">
+              ⚪⚪⚪
+              </div>
+              <div className="row-of-circles" id="right-row-circles">
+              ⚪⚪⚪
+              </div>
+              <div className="row-of-circles" id="bottom-row-circles">
+              ⚪⚪⚪
+              </div>
+            </div>
             <div id="right-side-container">
               <label id="right-side-label">
                 {rightRow}

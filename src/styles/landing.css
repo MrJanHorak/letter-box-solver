@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap");
 
+/* custom stylings */
+:root {
+  --active-bg-color: #beb1b1;
+  --active-text-color: rgb(0, 0, 0);
+  --inactive-bg-color: #567b9d;
+  --inactive-text-color: #3480D2;
+  --line-width: 5%;
+  --active-circle-diam: 30px;
+  --inactive-circle-diam: 20px;
+}
+
 body {
   font-family: "Solway", serif;
   background-color: #faa6a4;
@@ -69,6 +80,11 @@ label{
   height: 250px;
 }
 
+.row-of-circles{
+  letter-spacing: 3em;
+  text-indent: 3em;
+}
+
 .button {
   background-color: black;
   border: 1px solid black;
@@ -102,7 +118,11 @@ label{
   background: transparent;
   height: 40px;
   width: 250px;
+}
 
+#top-row-circles{
+  position: relative;
+  top: -13px;
 }
 
 #left-side-container {
@@ -120,9 +140,16 @@ label{
 #left-side-container input {
   position: absolute;
   background: transparent;
-  margin: 105px 12px 0 12px;
+  margin: 105px 0px 0 0px;
   height: 40px;
   width: 250px;
+  transform: rotate(-90deg);
+}
+
+#left-row-circles{
+  position: relative;
+  top:103px;
+  left: -51%;
   transform: rotate(-90deg);
 }
 
@@ -141,7 +168,7 @@ label{
 #right-side-container input {
   position: absolute;
   background: transparent;
-  margin: 105px 12px 0 12px;
+  margin: 105px 0px 0 0px;
   height: 40px;
   width: 250px;
   transform: rotate(90deg);
@@ -154,7 +181,15 @@ label{
   color: rgba(3, 3, 3, 0.3);
   letter-spacing: 1.7em;
   text-indent: 1.2em;
-  text-orientation:sideways;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+#right-row-circles{
+  position: relative;
+  top:70px;
+  right: -51%;
+  transform: rotate(90deg);
 }
 
 #bottom-row-container {
@@ -172,4 +207,9 @@ label{
   background: transparent;
   height: 40px;
   width: 250px;
+}
+
+#bottom-row-circles{
+  position: relative;
+  bottom: -177px;
 }

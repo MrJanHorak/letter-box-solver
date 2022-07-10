@@ -14,7 +14,7 @@ input {
   border-radius: 1.4em;
 }
 
-::placeholder {
+::-webkit-input-placeholder {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 34px;
   color: rgba(3, 3, 3, 0.3);
@@ -165,7 +165,7 @@ label {
   transform: rotate(90deg);
 }
 
-#right-side-container input::placeholder {
+#right-side-container input::-webkit-input-placeholder {
   padding-top: 34px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 34px;

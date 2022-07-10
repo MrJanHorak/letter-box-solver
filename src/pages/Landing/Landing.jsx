@@ -84,6 +84,7 @@ const Landing = () => {
 
   useEffect(() => {
     const suggestedWords = () => {
+      setMessage("All Possible words found!")
       if (recievedWords) {
         return <AllSuggestedWords potentialWords={cleanedList} />;
       }
@@ -93,6 +94,7 @@ const Landing = () => {
 
   useEffect(() => {
     if (recievedWords) {
+      setMessage("Looking for 2 word combos!")
       let one;
       one = oneWordSolutions(lettersArraySet, cleanedList);
       setOneWord(one);
@@ -106,6 +108,7 @@ const Landing = () => {
       two = twoWordSolutions(lettersArraySet, cleanedList);
       setTwoWord(two);
       console.log("Two Word solutions", two);
+      setMessage("Looking for 3 word combos!")
     }
   }, [oneWord]);
 
@@ -115,6 +118,7 @@ const Landing = () => {
       three = threeWordSolutions(lettersArraySet, cleanedList);
       setThreeWord(three);
       console.log("Three Word solutions", three);
+      setMessage("Done!")
     }
   }, [twoWord]);
 

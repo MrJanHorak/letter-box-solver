@@ -1,14 +1,30 @@
 .pairs-of-suggested-words{
-  height:150px;
+  height:auto;
+  max-height: 400px;
   width: 350px;
   background-color: aliceblue;
   overflow: hidden;
   border: 2px solid black;
   margin: 12px 0 12px 0;
   border-radius: 1.4em;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  align-content: center;
+  text-align: center;
 }
 
-.all-suggested-words li{
-  text-decoration: none;
+.pairs-of-suggested-words ul{
+  display: inline-block;
+  text-align: left;
+  list-style:none;
+}
 
+.pairs-of-suggested-words li{
+  text-decoration: none;
+}
+
+.pairs-of-suggested-words h4{
+  margin-bottom: 0;
 }

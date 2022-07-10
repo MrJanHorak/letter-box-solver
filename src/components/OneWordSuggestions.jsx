@@ -14,7 +14,9 @@ const OneWordSuggestions = ({ lettersArraySet, cleanedList }) => {
 
   return (
     <>
-      <div className="single-suggested-words">{suggestionsArray}</div>
+      <div className="single-suggested-words">
+        <h4>All one Word options:</h4>
+        {suggestionsArray}</div>
     </>
   );
 };

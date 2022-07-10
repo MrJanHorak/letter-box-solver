@@ -1,9 +1,5 @@
 .all-suggested-words{
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content:space-around; */
-  height:150px;
+  max-height:250px;
   width: 350px;
   background-color: aliceblue;
   overflow: hidden;
@@ -11,20 +7,28 @@
   margin: 12px 0 12px 0;
   border-radius: 1.4em;
   color: #000;
-  overflow: scroll;
+  overflow-y: auto;
+  text-align: center;
+  scrollbar-width: thin;
 }
 
-ul{
+.all-suggested-words ul{
+  text-align: left;
+  display: inline-block;
   list-style:none;
-  text-align: center;
 }
   
-ul li{
+.all-suggested-words ul li{
   float:left;
-  padding:3%;
+  padding:1.5% 3% 1.5% 0;
 }
 
-ul li:nth-child(3n+1){
-  clear:both;
+.all-suggested-words ul li:nth-child(3n+1){
+ clear: none;
 }
+
+.all-suggested-words h4{
+  margin-bottom: 0;
+}
+
 

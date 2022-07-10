@@ -25,7 +25,7 @@ const threeWordSolutions = (lettersArraySet, wordList) => {
               compareSet.size === 0
             ) {
               threeWordSolutions.push([word, secondWord, thirdWord]);
-              if (threeWordSolutions.length === 50) {
+              if (threeWordSolutions.length === 10) {
                 return threeWordSolutions;
               }
             }

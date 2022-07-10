@@ -1,0 +1,12 @@
+.all-suggested-words{
+  height:150px;
+  width: 350px;
+  background-color: aliceblue;
+  overflow: hidden;
+
+}
+
+.all-suggested-words li{
+  text-decoration: none;
+
+}

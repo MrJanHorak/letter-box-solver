@@ -1,5 +1,9 @@
-.all-suggested-words{
-  height:150px;
+.single-suggested-words{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height:50px;
   width: 350px;
   background-color: aliceblue;
   overflow: hidden;

@@ -4,12 +4,15 @@ import React, { useEffect, useState } from "react";
 import words from "../../data/words_dictionary.json";
 import cleanWordList from "../../js/cleanWordList";
 import findAllPossibleWords from "../../js/findAllPossibleWords";
-import oneWordSolutions from "../../js/oneWordSolutions";
-import twoWordSolutions from "../../js/twoWordSolutions";
-import threeWordSolutions from "../../js/threeWordSolutions";
+// import oneWordSolutions from "../../js/oneWordSolutions";
+// import twoWordSolutions from "../../js/twoWordSolutions";
+// import threeWordSolutions from "../../js/threeWordSolutions";
 
 // components
 import AllSuggestedWords from "../../components/AllSuggestedWords";
+import OneWordSuggestions from "../../components/OneWordSuggestions";
+import TwoWordSuggestions from "../../components/TwoWordSuggestions";
+import ThreeWordSuggestions from "../../components/ThreeWordSuggestions";
 
 // style
 import "../../styles/landing.css";
@@ -43,10 +46,13 @@ const Landing = () => {
 
   const handleChange = (e) => {
     if (onlyLetters(e.target.value)) {
-      if (e.target.name === "left-side") setLeftRow((e.target.value).toUpperCase());
-      if (e.target.name === "right-side") setRightRow((e.target.value).toUpperCase());
-      if (e.target.name === "top-row") setTopRow((e.target.value).toUpperCase());
-      if (e.target.name === "bottom-row") setBottomRow((e.target.value).toUpperCase());
+      if (e.target.name === "left-side")
+        setLeftRow(e.target.value.toUpperCase());
+      if (e.target.name === "right-side")
+        setRightRow(e.target.value.toUpperCase());
+      if (e.target.name === "top-row") setTopRow(e.target.value.toUpperCase());
+      if (e.target.name === "bottom-row")
+        setBottomRow(e.target.value.toUpperCase());
     } else {
       setMessage("Please only enter letters");
     }
@@ -54,16 +60,26 @@ const Landing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    allSubmittedLetters = topRow.toLowerCase()
+    allSubmittedLetters = topRow
+      .toLowerCase()
       .split("")
-      .concat(leftRow.toLowerCase().split(""), rightRow.toLowerCase().split(""), bottomRow.toLowerCase().split(""));
+      .concat(
+        leftRow.toLowerCase().split(""),
+        rightRow.toLowerCase().split(""),
+        bottomRow.toLowerCase().split("")
+      );
     lettersSet = new Set(allSubmittedLetters);
     setLettersArraySet(lettersSet);
     if (lettersSet.size !== 12) {
       setMessage("No double letters allowed!");
     } else {
       setMessage("searching ...");
-      Solver(topRow.toLowerCase(), leftRow.toLowerCase(), rightRow.toLowerCase(), bottomRow.toLowerCase());
+      Solver(
+        topRow.toLowerCase(),
+        leftRow.toLowerCase(),
+        rightRow.toLowerCase(),
+        bottomRow.toLowerCase()
+      );
     }
   };
 
@@ -82,44 +98,75 @@ const Landing = () => {
     setRecievedWords(true);
   };
 
+  // Create a list of all word possible with current letters
+
   useEffect(() => {
     const suggestedWords = () => {
-      setMessage("All Possible words found!")
       if (recievedWords) {
+        setMessage("All Possible words found!");
         return <AllSuggestedWords potentialWords={cleanedList} />;
       }
     };
     setSuggestions(suggestedWords());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recievedWords]);
 
+  // look for any potential one word solutions (which is rare, but kinda cool)
+
   useEffect(() => {
     if (recievedWords) {
-      setMessage("Looking for 2 word combos!")
-      let one;
-      one = oneWordSolutions(lettersArraySet, cleanedList);
-      setOneWord(one);
-      console.log("One Word solutions", one);
+      setMessage("Looking for 2 word combos!");
+      const singleWords = () => {
+        return (
+          <OneWordSuggestions
+            lettersArraySet={lettersArraySet}
+            cleanedList={cleanedList}
+          />
+        );
+      };
+
+      setOneWord(singleWords());
+      console.log("One Word solutions", oneWord);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [suggestions]);
 
-  useEffect(() => {
-    if (recievedWords) {
-      let two;
-      two = twoWordSolutions(lettersArraySet, cleanedList);
-      setTwoWord(two);
-      console.log("Two Word solutions", two);
-      setMessage("Looking for 3 word combos!")
-    }
-  }, [oneWord]);
+  // look for any pair of words that can solve the letter boxed
 
   useEffect(() => {
     if (recievedWords) {
-      let three;
-      three = threeWordSolutions(lettersArraySet, cleanedList);
-      setThreeWord(three);
-      console.log("Three Word solutions", three);
-      setMessage("Done!")
+      const twoWords = () => {
+        return (
+          <TwoWordSuggestions
+            lettersArraySet={lettersArraySet}
+            cleanedList={cleanedList}
+          />
+        );
+      };
+      setTwoWord(twoWords());
+      console.log("Two Word solutions", twoWords);
+      setMessage("Looking for 3 word combos!");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [oneWord]);
+
+  // look for any trio of words (however limited to 10 since worldlist ^ 3 is hard work)
+
+  useEffect(() => {
+    if (recievedWords) {
+      const threeWords = () => {
+        return (
+          <ThreeWordSuggestions
+            lettersArraySet={lettersArraySet}
+            cleanedList={cleanedList}
+          />
+        );
+      };
+      setThreeWord(threeWords());
+      console.log("Three Word solutions", threeWord);
+      setMessage("Done!");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [twoWord]);
 
   return (
@@ -223,7 +270,6 @@ const Landing = () => {
         />
       </form>
       <div className="solution-suggestions">
-        <h3> Suggestions</h3>
         <div className="suggested-words-container">{suggestions}</div>
         <div className="one-word-solutions">{oneWord}</div>
         <div className="two-word-solutions">{twoWord}</div>

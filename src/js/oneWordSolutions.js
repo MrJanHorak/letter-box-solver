@@ -9,7 +9,7 @@ const findOneWordSolutions = (lettersArraySet, wordList) => {
   }
 
   if (oneWordSolutions.length === 0) {
-    oneWordSolutions = ["no one word Solutions found"];
+    oneWordSolutions = ["no one word solutions found"];
   }
 
   return oneWordSolutions;

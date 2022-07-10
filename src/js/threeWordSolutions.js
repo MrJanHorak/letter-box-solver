@@ -36,7 +36,7 @@ const threeWordSolutions = (lettersArraySet, wordList) => {
   }
 
   if (threeWordSolutions.length === 0) {
-    threeWordSolutions = ["no three word Solutions found"];
+    threeWordSolutions = ["no three word solutions found"];
   }
 
   return threeWordSolutions;

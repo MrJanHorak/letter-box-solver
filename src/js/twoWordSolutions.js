@@ -22,7 +22,7 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
   }
 
   if (twoWordSolutions.length === 0) {
-    twoWordSolutions = ["no two word Solutions found"];
+    twoWordSolutions = ["no two word solutions found"];
   }
 
   return twoWordSolutions;

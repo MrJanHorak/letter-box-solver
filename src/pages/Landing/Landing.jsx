@@ -43,10 +43,10 @@ const Landing = () => {
 
   const handleChange = (e) => {
     if (onlyLetters(e.target.value)) {
-      if (e.target.name === "left-side") setLeftRow(e.target.value);
-      if (e.target.name === "right-side") setRightRow(e.target.value);
-      if (e.target.name === "top-row") setTopRow(e.target.value);
-      if (e.target.name === "bottom-row") setBottomRow(e.target.value);
+      if (e.target.name === "left-side") setLeftRow((e.target.value).toUpperCase());
+      if (e.target.name === "right-side") setRightRow((e.target.value).toUpperCase());
+      if (e.target.name === "top-row") setTopRow((e.target.value).toUpperCase());
+      if (e.target.name === "bottom-row") setBottomRow((e.target.value).toUpperCase());
     } else {
       setMessage("Please only enter letters");
     }
@@ -54,17 +54,32 @@ const Landing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    allSubmittedLetters = topRow
+    allSubmittedLetters = topRow.toLowerCase()
       .split("")
-      .concat(leftRow.split(""), rightRow.split(""), bottomRow.split(""));
+      .concat(leftRow.toLowerCase().split(""), rightRow.toLowerCase().split(""), bottomRow.toLowerCase().split(""));
     lettersSet = new Set(allSubmittedLetters);
     setLettersArraySet(lettersSet);
     if (lettersSet.size !== 12) {
       setMessage("No double letters allowed!");
     } else {
       setMessage("searching ...");
-      Solver(topRow, leftRow, rightRow, bottomRow);
+      Solver(topRow.toLowerCase(), leftRow.toLowerCase(), rightRow.toLowerCase(), bottomRow.toLowerCase());
     }
+  };
+
+  const Solver = (topRow, leftrow, rightRow, bottomRow) => {
+    let cleaned_list = cleanWordList(words);
+    potentialWords = findAllPossibleWords(
+      topRow,
+      leftrow,
+      rightRow,
+      bottomRow,
+      lettersSet,
+      cleaned_list
+    );
+
+    setCleanedList(potentialWords);
+    setRecievedWords(true);
   };
 
   useEffect(() => {
@@ -103,21 +118,6 @@ const Landing = () => {
     }
   }, [twoWord]);
 
-  const Solver = (topRow, leftrow, rightRow, bottomRow) => {
-    let cleaned_list = cleanWordList(words);
-    potentialWords = findAllPossibleWords(
-      topRow,
-      leftrow,
-      rightRow,
-      bottomRow,
-      lettersSet,
-      cleaned_list
-    );
-
-    setCleanedList(potentialWords);
-    setRecievedWords(true);
-  };
-
   return (
     <div className="main-page-container">
       <div className="title-container">
@@ -130,7 +130,7 @@ const Landing = () => {
             <label id="top-row-label">
               {topRow}
               <input
-                placeholder="abc"
+                placeholder="ABC"
                 id="top-row"
                 type="text"
                 name="top-row"
@@ -157,7 +157,7 @@ const Landing = () => {
                   value={leftRow}
                   onFocus={resetValue}
                   onChange={handleChange}
-                  placeholder="jkl"
+                  placeholder="JKL"
                 />
               </label>
             </div>
@@ -187,7 +187,7 @@ const Landing = () => {
                   value={rightRow}
                   onFocus={resetValue}
                   onChange={handleChange}
-                  placeholder="def"
+                  placeholder="DEF"
                 />
               </label>
             </div>
@@ -196,7 +196,7 @@ const Landing = () => {
             <label id="bottom-row-label">
               {bottomRow}
               <input
-                placeholder="ghi"
+                placeholder="GHI"
                 id="bottom-row"
                 type="text"
                 name="bottom-row"

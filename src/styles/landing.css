@@ -29,7 +29,7 @@ label {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 34px;
   color: white;
-  letter-spacing: 1.7em;
+  letter-spacing: 1.4em;
   text-align: center;
   width: 250px;
   height: 40px;
@@ -123,7 +123,8 @@ label {
   text-orientation: upright;
   height: 250px;
   width: 40px;
-  text-indent: 0.3em;
+  letter-spacing: 1.0em;
+  text-indent: 1.2em;
 }
 
 #left-side-container input {
@@ -151,7 +152,8 @@ label {
   text-orientation: upright;
   height: 250px;
   width: 40px;
-  text-indent: 0.3em;
+  letter-spacing: 0.9em;
+  text-indent: 1.1em;
 }
 
 #right-side-container input {

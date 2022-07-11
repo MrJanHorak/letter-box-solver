@@ -16,6 +16,9 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
         if (firstLetter === lastLetter && compareSet.size === 0) {
           twoWordSolutions.push([word, nextWord]);
         }
+        if (twoWordSolutions.length === 200) {
+          return twoWordSolutions;
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from "react";
+import React from "react";
 
 // assets
 import threeWordSolutions from "../js/threeWordSolutions.js";
@@ -7,14 +7,11 @@ import threeWordSolutions from "../js/threeWordSolutions.js";
 import "../styles/threeWordSuggestions.css";
 
 const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
-  const [checkForThree, setCheckForThree] = useState(false);
   let suggestionsArrayThree = [];
   let three = [];
 
-  if (checkForThree) {
-    three = threeWordSolutions(lettersArraySet, cleanedList);
-    three.map((wordTrio) => suggestionsArrayThree.push(wordTrio));
-  }
+  three = threeWordSolutions(lettersArraySet, cleanedList);
+  three.map((wordTrio) => suggestionsArrayThree.push(wordTrio));
 
   const threeWord = suggestionsArrayThree.map((words, index) => {
     return (
@@ -25,25 +22,6 @@ const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
       </tr>
     );
   });
-
-  useEffect(() => {}, [checkForThree]);
-
-  if (!checkForThree) {
-    return (
-      <>
-        You can search for 3 word solutions here. This search can take longer,
-        so please be patient.
-        <input
-          className="button"
-          type="submit"
-          value="Search More"
-          required
-          autoComplete="off"
-          onSubmit={setCheckForThree(true)}
-        />
-      </>
-    );
-  }
 
   if (three[0] === "no three word solutions found") {
     <>
@@ -60,13 +38,13 @@ const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
         <div className="trios-of-suggested-words">
           <h4>Only first 10 three word solutions:</h4>
           <table>
-          <tbody>
-            <tr>
-              <th></th>
-              <th></th>
-            </tr>
-          {threeWord}
-          </tbody>
+            <tbody>
+              <tr>
+                <th></th>
+                <th></th>
+              </tr>
+              {threeWord}
+            </tbody>
           </table>
         </div>
       </>

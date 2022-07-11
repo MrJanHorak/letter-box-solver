@@ -8,33 +8,46 @@ import "../styles/twoWordSuggestions.css";
 
 const TwoWordSuggestions = ({ lettersArraySet, cleanedList }) => {
   let two = twoWordSolutions(lettersArraySet, cleanedList);
-  let suggestionsArray = [];
+  let suggestionsArrayTwo = [];
 
-  two.map((wordPair) => suggestionsArray.push(wordPair));
+  two.map((wordPair) => suggestionsArrayTwo.push(wordPair));
 
-  const twoWord = suggestionsArray.map((words, index) => {
-        return (
-        <li key={2+index}>{words[0]} &emsp; {words[1]}</li>);
-      });
-  
-      if(two[0]==="no two word solutions found"){
-        <>
-      <div className="pairs-of-suggested-words">
-        <h4>All two word solutions:</h4>
-        <ul><li>{two[0]}</li></ul>
-      </div>
-    </>
-      }
-      else{
-  return (
+  const twoWord = suggestionsArrayTwo.map((words, index) => {
+    return (
+      <tr key={2 + index}>
+        <td>{words[0]}</td>
+        <td>{words[1]}</td>
+      </tr>
+    );
+  });
+
+  if (two[0] === "no two word solutions found") {
     <>
       <div className="pairs-of-suggested-words">
         <h4>All two word solutions:</h4>
-        <ul>{twoWord}</ul>
+        <ul>
+          <li>{two[0]}</li>
+        </ul>
       </div>
-    </>
-  );
-}
-}
+    </>;
+  } else {
+    return (
+      <>
+        <div className="pairs-of-suggested-words">
+          <h4>All two word solutions:</h4>
+          <table>
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+            {twoWord}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
+  }
+};
 
 export default TwoWordSuggestions;

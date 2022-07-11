@@ -74,6 +74,7 @@ const Landing = () => {
       setMessage("No double letters allowed!");
     } else {
       setMessage("searching ...");
+      setRecievedWords(false)
       Solver(
         topRow.toLowerCase(),
         leftRow.toLowerCase(),
@@ -126,7 +127,6 @@ const Landing = () => {
       };
 
       setOneWord(singleWords());
-      console.log("One Word solutions", oneWord);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [suggestions]);
@@ -135,6 +135,7 @@ const Landing = () => {
 
   useEffect(() => {
     if (recievedWords) {
+      setMessage("Looking for 3 word combos!");
       const twoWords = () => {
         return (
           <TwoWordSuggestions
@@ -143,9 +144,8 @@ const Landing = () => {
           />
         );
       };
+
       setTwoWord(twoWords());
-      console.log("Two Word solutions", twoWords);
-      setMessage("Looking for 3 word combos!");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [oneWord]);
@@ -163,7 +163,6 @@ const Landing = () => {
         );
       };
       setThreeWord(threeWords());
-      console.log("Three Word solutions", threeWord);
       setMessage("Done!");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

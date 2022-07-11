@@ -1,9 +1,9 @@
-.single-suggested-words{
+.single-suggested-words {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height:100px;
+  height: 100px;
   width: 350px;
   background-color: aliceblue;
   overflow: hidden;
@@ -12,7 +12,12 @@
   border-radius: 1.4em;
 }
 
-.all-suggested-words li{
+.single-suggested-words li {
   text-decoration: none;
+}
 
+.single-suggested-words h4 {
+  margin-top: 0px;
+  margin-bottom: 8px;
+  text-decoration: underline;
 }

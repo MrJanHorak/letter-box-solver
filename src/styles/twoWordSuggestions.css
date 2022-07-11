@@ -3,7 +3,6 @@
   max-height: 400px;
   width: 350px;
   background-color: aliceblue;
-  overflow: hidden;
   border: 2px solid black;
   margin: 12px 0 12px 0;
   border-radius: 1.4em;
@@ -16,9 +15,12 @@
 }
 
 .pairs-of-suggested-words ul{
-  display: inline-block;
-  text-align: left;
   list-style:none;
+  text-align: center;
+  list-style-position: inside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .pairs-of-suggested-words li{
@@ -26,5 +28,11 @@
 }
 
 .pairs-of-suggested-words h4{
-  margin-bottom: 0;
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+
+.pairs-of-suggested-words td {
+  text-align: center;
+  height: 27px;
 }

@@ -74,7 +74,7 @@ const Landing = () => {
       setMessage("No double letters allowed!");
     } else {
       setMessage("searching ...");
-      setRecievedWords(false)
+      setRecievedWords(false);
       Solver(
         topRow.toLowerCase(),
         leftRow.toLowerCase(),
@@ -82,6 +82,22 @@ const Landing = () => {
         bottomRow.toLowerCase()
       );
     }
+  };
+
+  const refresh = (e) => {
+    setLeftRow([]);
+    setTopRow([]);
+    setRightRow([]);
+    setBottomRow([]);
+    setMessage("Input letters here");
+    setOneWord([]);
+    setTwoWord([]);
+    setThreeWord([]);
+    setCleanedList();
+    setRecievedWords(false);
+    setSuggestions();
+    setLettersArraySet();
+    allSubmittedLetters = [];
   };
 
   const Solver = (topRow, leftrow, rightRow, bottomRow) => {
@@ -260,14 +276,23 @@ const Landing = () => {
             </label>
           </div>
         </div>
+        <div className="button-container">
         <input
           className="button"
           type="submit"
           value="Submit"
-          required
           autoComplete="off"
+          />
+      <input
+        className="button"
+        type="button"
+        value="Refresh"
+        autoComplete="off"
+        onClick={refresh}
         />
-      </form>
+      </div>
+        </form>
+
       <div className="solution-suggestions">
         <div className="suggested-words-container">{suggestions}</div>
         <div className="one-word-solutions">{oneWord}</div>

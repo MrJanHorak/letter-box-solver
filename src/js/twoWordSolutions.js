@@ -3,8 +3,6 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
   let lastLetter, firstLetter;
   // let compareSet;
 
-  console.time('test2');
-
   for (let word in wordList) {
     for (let nextWord in wordList) {
       if (nextWord !== word) {
@@ -33,8 +31,6 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
       }
     }
   }
-
-  console.timeEnd('test2');
   
   if (twoWordSolutions.length === 0) {
     twoWordSolutions = ["no two word solutions found"];

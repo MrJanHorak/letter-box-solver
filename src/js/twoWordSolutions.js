@@ -4,19 +4,21 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
   let compareSet;
 
   for (let word in wordList) {
-    lastLetter = word.slice(-1);
     for (let nextWord in wordList) {
       if (nextWord !== word) {
+        lastLetter = word.slice(-1);
         firstLetter = nextWord.charAt(0);
 
         compareSet = new Set(
-          [...lettersArraySet].filter((letter) => !new Set((word + nextWord).split("")).has(letter))
+          [...lettersArraySet].filter(
+            (letter) => !new Set((word + nextWord).split("")).has(letter)
+          )
         );
 
         if (firstLetter === lastLetter && compareSet.size === 0) {
           twoWordSolutions.push([word, nextWord]);
         }
-        if (twoWordSolutions.length === 200) {
+        if (twoWordSolutions.length === 50) {
           return twoWordSolutions;
         }
       }

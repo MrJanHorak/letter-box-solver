@@ -1,13 +1,39 @@
 # Letter Boxed Solution Finder
 
-The New York Times puzzle page has become a fun family challenge for my family. It has become a small challenge to see who can find the best words to solve the puzzles. 
+![Imgur](https://i.imgur.com/9qOgepcl.png?2) 
+
+## Backstory:
+
+The New York Times puzzle page has become a fun family challenge for my family. We like to see who can find the best words to solve the puzzles. When your early teen begins finding better (longer and more sophisticated) words than you, then you need to find a way to surprise them. 
 
 That had me thinking that perhaps I could create a tool to 'help' find the best words to solve the puzzle.
 
 This is an attempt to create such a tool. 
 
-If I can successfully create the tool that offers word suggestions, I cannot be sure the suggested words will actually be in the Letter Boxed dictionary.
+# [Try it here!](https://letter-boxed-solver.netlify.app/)
 
-But it will be fun to try :-)
+## Challenges encountered: 
+<ul>
+<li>This was a fun side project, I thought I would perhaps need to use some of my new learned search algorithms, however in the end I learned it is much faster to remove words that do not contain the letters provided by the user. </li>
 
-This will be a fun app to practice using only front-side (user computer power) and I assume search algorithms to find word matches.
+<li>The next challenge was (and still is) finding matching word pairs in a timely and less resource intensive manner. For ... loops are not as pretty coding wise as filters, however apparently the filter() method is slower than a for ... loop. </li>
+
+<li>Desktops have more computational power and more memory; they can handle the search much easier than mobile devices. </li>
+</ul>
+
+## Ice box:
+
+<ul>
+<li>Tweak the algorithms to be faster (specifically with mobile devices in mind</li>
+<li>Add a settings option that stores the users’ preferences in local storage</li>
+<li>Find a better (shorter) word list of only commonly used words</li>
+<li>Give the user the ability to choose how many 2-word or 3-word solutions are returned</li>
+<li>Tweak the circles on the white-box to be more cross-device and cross browser compatible</li>
+</ul>
+
+## Acknowledgements: 
+
+I stumbled across the current word list I am using here: 
+https://github.com/dwyl/english-words
+
+Google fonts: https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap

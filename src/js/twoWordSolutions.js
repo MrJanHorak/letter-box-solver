@@ -25,7 +25,7 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
         if (firstLetter === lastLetter && forLoopCompare.length === 0) {
           twoWordSolutions.push([word, nextWord]);
         }
-        if (twoWordSolutions.length === 50) {
+        if (twoWordSolutions.length === 10) {
           return twoWordSolutions;
         }
       }

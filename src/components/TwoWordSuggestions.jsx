@@ -34,7 +34,7 @@ const TwoWordSuggestions = ({ lettersArraySet, cleanedList }) => {
     return (
       <>
         <div className="pairs-of-suggested-words">
-          <h4>Up to 50 two word solutions:</h4>
+          <h4>Up to 10 two word solutions:</h4>
           <table>
           <tbody>
             <tr>

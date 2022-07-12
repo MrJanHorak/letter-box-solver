@@ -1,7 +1,7 @@
 const threeWordSolutions = (lettersArraySet, wordList) => {
   let threeWordSolutions = [];
   let firstWordLast, secondWordFirst, secondWordLast, thirdWordFirst;
-  let compareSet;
+  // let compareSet;
 
   for (let word in wordList) {
     for (let secondWord in wordList) {
@@ -13,14 +13,21 @@ const threeWordSolutions = (lettersArraySet, wordList) => {
             secondWordLast = secondWord.slice(-1);
             thirdWordFirst = thirdWord.slice(-1);
 
-            compareSet = new Set(
-              [...lettersArraySet].filter((letter) => !new Set((word + secondWord + thirdWord).split("")).has(letter))
-            );
+            // compareSet = new Set(
+            //   [...lettersArraySet].filter((letter) => !new Set((word + secondWord + thirdWord).split("")).has(letter))
+            // );
+
+            let forLoopCompare = []
+            for (let element of lettersArraySet){
+              if(!new Set((word + secondWord + thirdWord).split("")).has(element)){
+                forLoopCompare.push(element)
+              }
+            }
 
             if (
               firstWordLast === secondWordFirst &&
               secondWordLast === thirdWordFirst &&
-              compareSet.size === 0
+              forLoopCompare.length === 0
             ) {
               threeWordSolutions.push([word, secondWord, thirdWord]);
               if (threeWordSolutions.length === 10) {

@@ -4,9 +4,6 @@ import React, { useEffect, useState } from "react";
 import words from "../../data/words_dictionary.json";
 import cleanWordList from "../../js/cleanWordList";
 import findAllPossibleWords from "../../js/findAllPossibleWords";
-// import oneWordSolutions from "../../js/oneWordSolutions";
-// import twoWordSolutions from "../../js/twoWordSolutions";
-// import threeWordSolutions from "../../js/threeWordSolutions";
 
 // components
 import AllSuggestedWords from "../../components/AllSuggestedWords";
@@ -82,22 +79,6 @@ const Landing = () => {
         bottomRow.toLowerCase()
       );
     }
-  };
-
-  const refresh = (e) => {
-    setLeftRow([]);
-    setTopRow([]);
-    setRightRow([]);
-    setBottomRow([]);
-    setMessage("Input letters here");
-    setOneWord([]);
-    setTwoWord([]);
-    setThreeWord([]);
-    setCleanedList();
-    setRecievedWords(false);
-    setSuggestions();
-    setLettersArraySet();
-    allSubmittedLetters = [];
   };
 
   const Solver = (topRow, leftrow, rightRow, bottomRow) => {
@@ -288,7 +269,7 @@ const Landing = () => {
         type="button"
         value="Refresh"
         autoComplete="off"
-        onClick={refresh}
+        onClick={() => window.location.reload(false)}
         />
       </div>
         </form>

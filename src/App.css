@@ -164,8 +164,8 @@ a {
 /* sidebar Nav */
 
 .hamburger-button {
-  margin-top: 6px;
-  left: -65px;
+  margin-top: 4px;
+  left: 0px;
   color: var(--font-color);
   transition: 250ms;
 }
@@ -199,14 +199,14 @@ a {
   display: none;
   list-style: none;
   position: fixed;
-  top: 0;
+  top:-12px;
   background: rgba(127, 127, 127, 0.88);
   left: -44px;
   bottom: 0;
   height: 215px;
   width: 0;
   overflow: hidden;
-  max-width: 180px;
+  max-width: 220px;
   z-index: 9;
   border-radius: 12px;
   box-shadow: 1.5px 1.5px 3px;

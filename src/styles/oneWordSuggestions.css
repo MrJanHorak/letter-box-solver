@@ -5,7 +5,8 @@
   align-content: center;
   height: 100px;
   width: 350px;
-  background-color: aliceblue;
+  background-color: var(--box-background);
+  color: black;
   overflow: hidden;
   border: 2px solid black;
   margin: 12px 0 12px 0;

@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap");
 
+
+
 body {
   font-family: "Solway", serif;
-  background-color:#f8a99f;
-  color: black;
+  background-color:var(--background-color);
+  color: var(--font-color);
 }
 
 input {
@@ -61,7 +63,7 @@ label {
 }
 
 .white-box {
-  background-color: white;
+  background-color: var(--box-background);
   border: 3px solid black;
   margin: 0px 15px 15px 15px;
   width: 250px;

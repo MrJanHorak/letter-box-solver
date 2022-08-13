@@ -1,7 +1,7 @@
 .all-suggested-words{
   max-height:250px;
   width: 350px;
-  background-color: aliceblue;
+  background-color: var(--box-background);
   overflow: hidden;
   border: 2px solid black;
   margin: 12px 0 12px 0;
@@ -24,7 +24,7 @@
 }
 
 .all-suggested-words ul li:nth-child(3n+1){
- clear: none;
+  clear: none;
 }
 
 .all-suggested-words h4{

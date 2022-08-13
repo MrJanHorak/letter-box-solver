@@ -1,12 +1,20 @@
+// pages
+import Landing from "./pages/Landing/Landing";
 
-import Landing from './pages/Landing/Landing';
-import './App.css';
+// components
+import Nav from "../src/components/Nav";
+
+// style
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Landing />
-    </div>
+    <>
+      <Nav />
+      <div className="App">
+        <Landing />
+      </div>
+    </>
   );
 }
 

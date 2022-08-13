@@ -43,11 +43,11 @@ const Landing = () => {
 
   const handleChange = (e) => {
     if (onlyLetters(e.target.value)) {
+      if (e.target.name === "top-row") setTopRow(e.target.value.toUpperCase());
       if (e.target.name === "left-side")
         setLeftRow(e.target.value.toUpperCase());
       if (e.target.name === "right-side")
         setRightRow(e.target.value.toUpperCase());
-      if (e.target.name === "top-row") setTopRow(e.target.value.toUpperCase());
       if (e.target.name === "bottom-row")
         setBottomRow(e.target.value.toUpperCase());
     } else {

@@ -17,6 +17,9 @@ const threeWordSolutions = (lettersArraySet, wordList) => {
             //   [...lettersArraySet].filter((letter) => !new Set((word + secondWord + thirdWord).split("")).has(letter))
             // );
 
+            // depositing this here to research 
+            // results.filter(/* code to filter results */).map(/* code to make JSX components */)
+
             let forLoopCompare = []
             for (let element of lettersArraySet){
               if(!new Set((word + secondWord + thirdWord).split("")).has(element)){

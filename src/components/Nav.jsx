@@ -33,7 +33,7 @@ const Nav = () => {
             <li>&nbsp;</li>
             <li>
               <a
-                href="https://example.com"
+                href="https://wordle-solving-helper.netlify.app/"
                 rel="noreferrer"
                 target="_blank"
                 onClick={() => closeMenu()}
@@ -69,15 +69,15 @@ const Nav = () => {
       <div id="nav-bar">
         <nav className="nav-bar">
           <a
-            className="button "
-            href="https://example.com"
+            className="nav-button"
+            href="https://wordle-solving-helper.netlify.app/"
             rel="noreferrer"
             target="_blank"
           >
             <span>Wordle Helper</span>
           </a>
           <a
-            className="button "
+            className="nav-button"
             href="https://spelling-bee-word-puzzle-solver.netlify.app/"
             rel="noreferrer"
             target="_blank"
@@ -85,7 +85,7 @@ const Nav = () => {
             <span>Spelling Bee Solver</span>
           </a>
           <a
-            className="button "
+            className="nav-button"
             href="https://letter-boxed-solver.netlify.app/"
             rel="noreferrer"
             target="_blank"

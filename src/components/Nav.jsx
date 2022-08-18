@@ -22,7 +22,7 @@ const Nav = () => {
     <>
       <div id="humburger">
         <nav className="navBar">
-          <button className="hamburger-button" onClick={handleToggle}>
+          <button className="hamburger-button" aria-label="navigation button" onClick={handleToggle}>
             {navbarOpen ? (
               <MdClose style={{ width: "40px", height: "40px" }} />
             ) : (
@@ -37,6 +37,7 @@ const Nav = () => {
                 rel="noreferrer"
                 target="_blank"
                 onClick={() => closeMenu()}
+                aria-label="link to wordle solving helper"
               >
                 {<BsGrid3X3 />} &nbsp;Wordle Helper
               </a>
@@ -48,6 +49,7 @@ const Nav = () => {
                 rel="noreferrer"
                 target="_blank"
                 onClick={() => closeMenu()}
+                aria-label="link to spelling bee word puzzle solver"
               >
                 {<CgBee />} &nbsp;Spelling Bee Solver
               </a>
@@ -59,6 +61,7 @@ const Nav = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => closeMenu()}
+                aria-label="link to letter boxed word puzzle solver"
               >
                 {<BsBoundingBoxCircles />} &nbsp;Letter Boxed Solver
               </a>
@@ -73,6 +76,7 @@ const Nav = () => {
             href="https://wordle-solving-helper.netlify.app/"
             rel="noreferrer"
             target="_blank"
+            aria-label="link to wordle solving helper"
           >
             <span>Wordle Helper</span>
           </a>
@@ -81,6 +85,7 @@ const Nav = () => {
             href="https://spelling-bee-word-puzzle-solver.netlify.app/"
             rel="noreferrer"
             target="_blank"
+            aria-label="link to spelling bee word puzzle solver"
           >
             <span>Spelling Bee Solver</span>
           </a>
@@ -89,6 +94,7 @@ const Nav = () => {
             href="https://letter-boxed-solver.netlify.app/"
             rel="noreferrer"
             target="_blank"
+            aria-label="link to letter boxed word puzzle solver"
           >
             <span>Letter Boxed Solver</span>
           </a>

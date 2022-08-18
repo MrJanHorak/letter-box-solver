@@ -171,7 +171,7 @@ const Landing = () => {
         <h1>Letter Boxed Solver</h1>
       </div>
       <form className="letters-input" onSubmit={handleSubmit}>
-        <h3>{message}</h3>
+        <h2>{message}</h2>
         <div className="solver-container">
           <div id="top-row-container">
             <label id="top-row-label">
@@ -187,6 +187,7 @@ const Landing = () => {
                 value={topRow}
                 onFocus={resetValue}
                 onChange={handleChange}
+                aria-label="input for the letters in the top row"
               />
             </label>
           </div>
@@ -205,6 +206,7 @@ const Landing = () => {
                   onFocus={resetValue}
                   onChange={handleChange}
                   placeholder="JKL"
+                  aria-label="input for the letters on the left side"
                 />
               </label>
             </div>
@@ -235,6 +237,7 @@ const Landing = () => {
                   onFocus={resetValue}
                   onChange={handleChange}
                   placeholder="DEF"
+                  aria-label="input for the letters on the right side"
                 />
               </label>
             </div>
@@ -253,26 +256,29 @@ const Landing = () => {
                 onFocus={resetValue}
                 value={bottomRow}
                 onChange={handleChange}
+                aria-label="input for the bottom row of letters"
               />
             </label>
           </div>
         </div>
         <div className="button-container">
-        <input
-          className="button"
-          type="submit"
-          value="Submit"
-          autoComplete="off"
+          <input
+            className="button"
+            type="submit"
+            value="Submit"
+            autoComplete="off"
+            aria-label="submit button"
           />
-      <input
-        className="button"
-        type="button"
-        value="Refresh"
-        autoComplete="off"
-        onClick={() => window.location.reload(false)}
-        />
-      </div>
-        </form>
+          <input
+            className="button"
+            type="button"
+            value="Refresh"
+            autoComplete="off"
+            onClick={() => window.location.reload(false)}
+            aria-label="refresh button"
+          />
+        </div>
+      </form>
 
       <div className="solution-suggestions">
         <div className="suggested-words-container">{suggestions}</div>

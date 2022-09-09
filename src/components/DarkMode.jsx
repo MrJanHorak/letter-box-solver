@@ -1,4 +1,5 @@
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
 const setDark = () => {
   localStorage.setItem("theme", "dark");
@@ -49,6 +50,14 @@ const DarkMode = () => {
       <span role="img" aria-label="dark theme">
         ⚫
       </span>
+      <div className="footer-info">
+        <p>
+          ©2022 Jan Horak
+          <a href="https://github.com/MrJanHorak/letter-box-solver">
+            <FaGithub />
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

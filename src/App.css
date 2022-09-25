@@ -25,6 +25,8 @@
   justify-content: center;
   width: 100%;
   bottom: 0;
+  background-color: var(--background-color);
+  opacity: 0.8;
 }
 
 .toggle-theme-wrapper span {

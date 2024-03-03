@@ -14,7 +14,7 @@ This is an attempt to create such a tool.
 
 ## Challenges encountered: 
 <ul>
-<li>This was a fun side project, I thought I would perhaps need to use some of my new learned search algorithms, however in the end I learned it is much faster to remove words that do not contain the letters provided by the user. </li>
+<li>This was a fun side project, I thought I would perhaps need to use some of my recently learned search algorithms, however in the end I learned it is much faster to remove words that do not contain the letters provided by the user. </li>
 
 <li>The next challenge was (and still is) finding matching word pairs in a timely and less resource intensive manner. For ... loops are not as pretty coding wise as filters, however apparently the filter() method is slower than a for ... loop. </li>
 
@@ -24,9 +24,9 @@ This is an attempt to create such a tool.
 ## Ice box:
 
 <ul>
-<li>Tweak the algorithms to be faster (specifically with mobile devices in mind</li>
+<li><s>Tweak the algorithms to be faster (specifically with mobile devices in mind</s></li>
 <li>Add a settings option that stores the users’ preferences in local storage</li>
-<li>Find a better (shorter) word list of only commonly used words</li>
+<li><s>Find a better (shorter) word list of only commonly used words</s></li>
 <li>Give the user the ability to choose how many 2-word or 3-word solutions are returned</li>
 <li>Tweak the circles on the white-box to be more cross-device and cross browser compatible</li>
 </ul>
@@ -35,5 +35,7 @@ This is an attempt to create such a tool.
 
 I stumbled across the current word list I am using here: 
 https://github.com/dwyl/english-words
+
+New (shorter) word list has was found here: https://github.com/gcapell/letterboxed/blob/main/words_easy.txt
 
 Google fonts: https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap

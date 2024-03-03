@@ -1,42 +1,38 @@
 const twoWordSolutions = (lettersArraySet, wordList) => {
-  let twoWordSolutions = [];
-  let lastLetter, firstLetter;
-  // let compareSet;
+  let solutions = [];
+  let wordMap = new Map();
+  let wordSetList = Object.keys(wordList).map(word => ({word, set: new Set(word.split(''))}));
 
-  for (let word in wordList) {
-    for (let nextWord in wordList) {
-      if (nextWord !== word) {
-        lastLetter = word.slice(-1);
-        firstLetter = nextWord.charAt(0);
-
-        // compareSet = new Set(
-        //   [...lettersArraySet].filter(
-        //     (letter) => !new Set((word + nextWord).split("")).has(letter)
-        //   )
-        // );
-
-        let forLoopCompare = []
-        for (let element of lettersArraySet){
-          if(!new Set((word + nextWord).split("")).has(element)){
-            forLoopCompare.push(element)
-          }
-        }
-
-        if (firstLetter === lastLetter && forLoopCompare.length === 0) {
-          twoWordSolutions.push([word, nextWord]);
-        }
-        if (twoWordSolutions.length === 10) {
-          return twoWordSolutions;
-        }
-      }
+  // Create a map where the keys are the first letter of each word
+  // and the values are arrays of words that start with that letter
+  for (let wordObj of wordSetList) {
+    let firstLetter = wordObj.word.charAt(0);
+    if (wordMap.has(firstLetter)) {
+      wordMap.get(firstLetter).push(wordObj);
+    } else {
+      wordMap.set(firstLetter, [wordObj]);
     }
   }
-  
-  if (twoWordSolutions.length === 0) {
-    twoWordSolutions = ["no two word solutions found"];
+
+  function findSolutions(firstWord, secondWord) {
+    // if (solutions.length >= 100) return;
+
+    if (firstWord.word.slice(-1) === secondWord.word.charAt(0) &&
+        [...lettersArraySet].every(letter => firstWord.set.has(letter) || secondWord.set.has(letter))) {
+      solutions.push([firstWord.word, secondWord.word]);
+    }
   }
-  
-  return twoWordSolutions;
+
+  for (let firstWord of wordSetList) {
+    let secondWords = wordMap.get(firstWord.word.slice(-1));
+    if (!secondWords) continue;
+    for (let secondWord of secondWords) {
+      if (secondWord === firstWord) continue;
+      findSolutions(firstWord, secondWord);
+    }
+  }
+
+  return solutions.length ? solutions : ["no two word solutions found"];
 };
 
 export default twoWordSolutions;

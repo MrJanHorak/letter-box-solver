@@ -1,53 +1,54 @@
 const threeWordSolutions = (lettersArraySet, wordList) => {
-  let threeWordSolutions = [];
-  let firstWordLast, secondWordFirst, secondWordLast, thirdWordFirst;
-  // let compareSet;
+  let solutions = []
+  let wordMap = new Map()
+  let wordSetList = Object.keys(wordList).map((word) => ({
+    word,
+    set: new Set(word.split(''))
+  }))
 
-  for (let word in wordList) {
-    for (let secondWord in wordList) {
-      if (secondWord !== word) {
-        for (let thirdWord in wordList) {
-          if (thirdWord !== secondWord && thirdWord !== word) {
-            firstWordLast = word.slice(-1);
-            secondWordFirst = secondWord.charAt(0);
-            secondWordLast = secondWord.slice(-1);
-            thirdWordFirst = thirdWord.slice(-1);
+  // Create a map where the keys are the first letter of each word
+  // and the values are arrays of words that start with that letter
+  for (let wordObj of wordSetList) {
+    let firstLetter = wordObj.word.charAt(0)
+    if (wordMap.has(firstLetter)) {
+      wordMap.get(firstLetter).push(wordObj)
+    } else {
+      wordMap.set(firstLetter, [wordObj])
+    }
+  }
 
-            // compareSet = new Set(
-            //   [...lettersArraySet].filter((letter) => !new Set((word + secondWord + thirdWord).split("")).has(letter))
-            // );
+  function findSolutions(firstWord, secondWord, thirdWord) {
+    if (solutions.length >= 50) return;
 
-            // depositing this here to research 
-            // results.filter(/* code to filter results */).map(/* code to make JSX components */)
+    if (
+      firstWord.word.slice(-1) === secondWord.word.charAt(0) &&
+      secondWord.word.slice(-1) === thirdWord.word.charAt(0) &&
+      [...lettersArraySet].every(
+        (letter) =>
+          firstWord.set.has(letter) ||
+          secondWord.set.has(letter) ||
+          thirdWord.set.has(letter)
+      )
+    ) {
+      solutions.push([firstWord.word, secondWord.word, thirdWord.word])
+    }
+  }
 
-            let forLoopCompare = []
-            for (let element of lettersArraySet){
-              if(!new Set((word + secondWord + thirdWord).split("")).has(element)){
-                forLoopCompare.push(element)
-              }
-            }
-
-            if (
-              firstWordLast === secondWordFirst &&
-              secondWordLast === thirdWordFirst &&
-              forLoopCompare.length === 0
-            ) {
-              threeWordSolutions.push([word, secondWord, thirdWord]);
-              if (threeWordSolutions.length === 10) {
-                return threeWordSolutions;
-              }
-            }
-          }
-        }
+  for (let firstWord of wordSetList) {
+    let secondWords = wordMap.get(firstWord.word.slice(-1))
+    if (!secondWords) continue
+    for (let secondWord of secondWords) {
+      if (secondWord === firstWord) continue
+      let thirdWords = wordMap.get(secondWord.word.slice(-1))
+      if (!thirdWords) continue
+      for (let thirdWord of thirdWords) {
+        if (thirdWord === secondWord || thirdWord === firstWord) continue
+        findSolutions(firstWord, secondWord, thirdWord)
       }
     }
   }
 
-  if (threeWordSolutions.length === 0) {
-    threeWordSolutions = ["no three word solutions found"];
-  }
+  return solutions.length ? solutions : ['no three word solutions found']
+}
 
-  return threeWordSolutions;
-};
-
-export default threeWordSolutions;
+export default threeWordSolutions

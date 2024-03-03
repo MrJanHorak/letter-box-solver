@@ -1,8 +1,10 @@
 const findOneWordSolutions = (lettersArraySet, wordList) => {
   let oneWordSolutions = [];
+  let lettersSet = new Set(lettersArraySet);
 
   for (let word in wordList) {
-    if (lettersArraySet === new Set(word.split(""))) {
+    let wordSet = new Set(word.split(""));
+    if (lettersSet.size === wordSet.size && [...lettersSet].every(letter => wordSet.has(letter))) {
       oneWordSolutions.push(word);
     }
   }

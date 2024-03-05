@@ -183,6 +183,9 @@ const Landing = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [twoWord])
 console.log('autoTopRow', autoTopRow)
+console.log('autoLeftRow', autoLeftRow)
+console.log('autoRightRow', autoRightRow)
+console.log('autoBottomRow', autoBottomRow)
 
   return (
     <div className="main-page-container">

@@ -39,3 +39,8 @@ https://github.com/dwyl/english-words
 New (shorter) word list has was found here: https://github.com/gcapell/letterboxed/blob/main/words_easy.txt
 
 Google fonts: https://fonts.googleapis.com/css2?family=Solway:wght@700&display=swap
+
+the inspiration for autofill comes from the following links:
+
+https://github.com/dcbriccetti/letter-boxed-game-solver/blob/main/src/puzzle_fetcher.py
+https://letterboxed.aliceyliang.com/populate

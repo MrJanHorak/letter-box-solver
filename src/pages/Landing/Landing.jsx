@@ -5,6 +5,9 @@ import words from '../../data/words_dictionary.json'
 import cleanWordList from '../../js/cleanWordList'
 import findAllPossibleWords from '../../js/findAllPossibleWords'
 
+//helper functions
+import fetchCurrentLetters from '../../js/fetchCurrentLetters'
+
 // components
 import AllSuggestedWords from '../../components/AllSuggestedWords'
 import OneWordSuggestions from '../../components/OneWordSuggestions'
@@ -19,6 +22,10 @@ const Landing = () => {
   const [topRow, setTopRow] = useState([])
   const [rightRow, setRightRow] = useState([])
   const [bottomRow, setBottomRow] = useState([])
+  const [autoLeftRow, setAutoLeftRow] = useState('')
+  const [autoTopRow, setAutoTopRow] = useState('')
+  const [autoRightRow, setAutoRightRow] = useState('')
+  const [autoBottomRow, setAutoBottomRow] = useState('')
   const [message, setMessage] = useState('Input letters here')
   const [oneWord, setOneWord] = useState([])
   const [twoWord, setTwoWord] = useState([])
@@ -109,6 +116,17 @@ const Landing = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [receivedWords])
 
+  useEffect(() => {
+    fetchCurrentLetters().then((sides) => {
+      if (sides.length === 15) {
+        setAutoTopRow([sides.split[0]])
+        setAutoLeftRow([sides.split[3]])
+        setAutoRightRow([sides.split[1]])
+        setAutoBottomRow([sides.split[2]])
+      }
+    })
+  }, [])
+
   // look for any potential one word solutions (which is rare, but kinda cool)
 
   useEffect(() => {
@@ -164,6 +182,7 @@ const Landing = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [twoWord])
+console.log('autoTopRow', autoTopRow)
 
   return (
     <div className="main-page-container">
@@ -262,6 +281,19 @@ const Landing = () => {
           </div>
         </div>
         <div className="button-container">
+          {/* <input
+            className="button"
+            type="button"
+            value="Autofill todays letters"
+            autoComplete="off"
+            aria-label="submit button"
+            onClick={() => {
+              setTopRow(autoTopRow || '')
+              setLeftRow(autoLeftRow || '')
+              setRightRow(autoRightRow || '')
+              setBottomRow(autoBottomRow || '')
+            }}
+          /> */}
           <input
             className="button"
             type="submit"

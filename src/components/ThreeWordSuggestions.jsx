@@ -36,7 +36,7 @@ const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
     return (
       <>
         <div className="trios-of-suggested-words">
-          <h4>All three word solutions:</h4>
+          <h4>First 75 3-word solutions:</h4>
           <table>
             <tbody>
               <tr>

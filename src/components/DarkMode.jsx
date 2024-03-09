@@ -52,7 +52,7 @@ const DarkMode = () => {
       </span>
       <div className="footer-info">
         <p>
-          ©2022 Jan Horak
+          ©2024 Jan Horak
           <a href="https://github.com/MrJanHorak/letter-box-solver">
             <FaGithub />
           </a>

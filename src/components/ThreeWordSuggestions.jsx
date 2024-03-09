@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 // assets
 import threeWordSolutions from "../js/threeWordSolutions.js";
@@ -6,12 +6,27 @@ import threeWordSolutions from "../js/threeWordSolutions.js";
 // style
 import "../styles/threeWordSuggestions.css";
 
-const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
-  let suggestionsArrayThree = [];
-  let three = [];
+// const ThreeWordSuggestions = async ({ lettersArraySet, cleanedList }) => {
+//   let suggestionsArrayThree = [];
+//   let three = [];
 
-  three = threeWordSolutions(lettersArraySet, cleanedList);
-  three.map((wordTrio) => suggestionsArrayThree.push(wordTrio));
+//   three = await threeWordSolutions(lettersArraySet, cleanedList);
+// console.log(three.length)
+// console.log('type of',typeof three)
+//   three.map((wordTrio) => suggestionsArrayThree.push(wordTrio));
+const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
+  const [suggestionsArrayThree, setSuggestionsArrayThree] = useState([]);
+  const [three, setThree] = useState([]);
+
+  useEffect(() => {
+    const fetchThreeWordSolutions = async () => {
+      const result = await threeWordSolutions(lettersArraySet, cleanedList);
+      setThree(result.solutions);
+      setSuggestionsArrayThree(result.solutions.map(wordTrio => wordTrio));
+    };
+
+    fetchThreeWordSolutions();
+  }, [lettersArraySet, cleanedList]);
 
   const threeWord = suggestionsArrayThree.map((words, index) => {
     return (
@@ -36,7 +51,7 @@ const ThreeWordSuggestions = ({ lettersArraySet, cleanedList }) => {
     return (
       <>
         <div className="trios-of-suggested-words">
-          <h4>First 75 3-word solutions:</h4>
+          <h4>{threeWord.length|| <span id='loading'>loading ...</span>} 3-word solutions:</h4>
           <table>
             <tbody>
               <tr>

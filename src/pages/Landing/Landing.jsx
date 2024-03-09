@@ -118,11 +118,12 @@ const Landing = () => {
 
   useEffect(() => {
     fetchCurrentLetters().then((sides) => {
+
       if (sides.length === 15) {
-        setAutoTopRow([sides.split[0]])
-        setAutoLeftRow([sides.split[3]])
-        setAutoRightRow([sides.split[1]])
-        setAutoBottomRow([sides.split[2]])
+        setAutoTopRow(sides.split(' ')[0])
+        setAutoLeftRow(sides.split(' ')[3])
+        setAutoRightRow(sides.split(' ')[1])
+        setAutoBottomRow(sides.split(' ')[2])
       }
     })
   }, [])
@@ -182,10 +183,6 @@ const Landing = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [twoWord])
-console.log('autoTopRow', autoTopRow)
-console.log('autoLeftRow', autoLeftRow)
-console.log('autoRightRow', autoRightRow)
-console.log('autoBottomRow', autoBottomRow)
 
   return (
     <div className="main-page-container">
@@ -284,10 +281,10 @@ console.log('autoBottomRow', autoBottomRow)
           </div>
         </div>
         <div className="button-container">
-          {/* <input
+          <input
             className="button"
             type="button"
-            value="Autofill todays letters"
+            value="Autofill"
             autoComplete="off"
             aria-label="submit button"
             onClick={() => {
@@ -296,7 +293,7 @@ console.log('autoBottomRow', autoBottomRow)
               setRightRow(autoRightRow || '')
               setBottomRow(autoBottomRow || '')
             }}
-          /> */}
+          />
           <input
             className="button"
             type="submit"

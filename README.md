@@ -29,6 +29,7 @@ This is an attempt to create such a tool.
 <li><s>Find a better (shorter) word list of only commonly used words</s></li>
 <li>Give the user the ability to choose how many 2-word or 3-word solutions are returned</li>
 <li>Tweak the circles on the white-box to be more cross-device and cross browser compatible</li>
+<li><s>Return all 3-word solutions</s> </li>
 </ul>
 
 ## Acknowledgements: 

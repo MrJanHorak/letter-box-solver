@@ -89,6 +89,14 @@ label {
   letter-spacing: 0.01em;
   width: 86px;
   height: 3em;
+  transition: all 0.1s ease-in-out;
+  position: relative;
+  box-shadow: 0px 5px 0px 0px #666;
+}
+
+.button:active {
+  box-shadow: 0px 2px 0px 0px #666;
+  transform: translateY(3px);
 }
 
 .solution-suggestions h3 {

@@ -9,7 +9,6 @@ export default async function fetchCurrentLetters() {
 
   try {
     const data = await response.json()
-    console.log(data.sides)
     return data.sides
   } catch (error) {
     console.error('Failed to parse JSON:', error)

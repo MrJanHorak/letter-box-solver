@@ -1,11 +1,17 @@
+.two-word-solutions {
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 6px 0px;
+  color: black;
+  border: 2px solid black;
+  margin: 12px 0 12px 0;
+  background-color: var(--box-background);
+  }
+
 .pairs-of-suggested-words{
   height:auto;
   max-height: 400px;
   width: 350px;
-  background-color: var(--box-background);
-  color: black;
-  border: 2px solid black;
-  margin: 12px 0 12px 0;
   border-radius: 1.4em;
   display: flex;
   flex-direction: column;
@@ -36,4 +42,27 @@
 .pairs-of-suggested-words td {
   text-align: center;
   height: 27px;
+}
+
+.hidden-characters {
+  font-size: 13.7px; /* or any size you want */
+}
+
+.reveal-button {
+  width: 200px;
+  background-color: var(--button-background);
+  color: var(--font-color);
+  border: 2px solid black;
+  border-radius: 1.4em;
+  margin: 12px 0 12px 0;
+  padding: 8px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: center;
+}
+
+.reveal-button:active {
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
 }

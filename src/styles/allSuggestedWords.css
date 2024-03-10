@@ -1,35 +1,40 @@
-.all-suggested-words{
-  max-height:250px;
-  width: 350px;
-  background-color: var(--box-background);
+.solutions-container {
+  border-radius: 10px;
   overflow: hidden;
+  padding: 6px 0px;
+  color: black;
   border: 2px solid black;
   margin: 12px 0 12px 0;
+  background-color: var(--box-background);
+}
+
+.all-suggested-words {
+  max-height: 250px;
+  width: 350px;
   border-radius: 1.4em;
+  overflow: hidden;
   color: #000;
   overflow-y: auto;
   text-align: center;
   scrollbar-width: thin;
 }
 
-.all-suggested-words ul{
+.all-suggested-words ul {
   text-align: left;
   display: inline-block;
-  list-style:none;
-}
-  
-.all-suggested-words ul li{
-  float:left;
-  padding:1.5% 3% 1.5% 0;
+  list-style: none;
 }
 
-.all-suggested-words ul li:nth-child(3n+1){
+.all-suggested-words ul li {
+  float: left;
+  padding: 1.5% 3% 1.5% 0;
+}
+
+.all-suggested-words ul li:nth-child(3n + 1) {
   clear: none;
 }
 
-.all-suggested-words h4{
+.all-suggested-words h4 {
   margin-bottom: 0;
   text-decoration: underline;
 }
-
-

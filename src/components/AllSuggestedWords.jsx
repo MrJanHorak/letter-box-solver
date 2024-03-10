@@ -11,13 +11,13 @@ const AllSuggestedWords = ({ potentialWords }) => {
   })
 
   return (
-    <>
+    <div className="solutions-container">
       <h3>Possible solutions:</h3>
       <div className="all-suggested-words">
         <h4>All possible words: </h4>
         <ul>{listItems}</ul>
       </div>
-    </>
+    </div>
   );
 };
 

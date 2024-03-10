@@ -314,9 +314,9 @@ const Landing = () => {
 
       <div className="solution-suggestions">
         <div className="suggested-words-container">{suggestions}</div>
-        {oneWord && <div className="one-word-solutions">{oneWord}</div>}
-        {twoWord && <div className="two-word-solutions">{twoWord}</div>}
-        {threeWord && <div className="three-word-solutions">{threeWord}</div>}
+        {oneWord && <div className="oneWordSolutions">{oneWord}</div>}
+        {twoWord && <div className="twoWordSolutions">{twoWord}</div>}
+        {threeWord && <div className="threeWordSolutions">{threeWord}</div>}
       </div>
     </div>
   )

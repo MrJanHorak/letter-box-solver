@@ -1,31 +1,43 @@
-.trios-of-suggested-words{
-  height:auto;
-  max-height: 400px;
-  width: 350px;
-  background-color: var(--box-background);
+.three-word-solutions {
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 6px 0px;
   color: black;
   border: 2px solid black;
   margin: 12px 0 42px 0px;
+  background-color: var(--box-background);
+  }
+
+.trios-of-suggested-words {
+  height: auto;
+  max-height: 400px;
+  width: 350px;
+  color: black;
+  
   border-radius: 1.4em;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
+  align-items: center;
   align-content: center;
   text-align: center;
 }
 
-.trios-of-suggested-words ul{
+.trios-of-suggested-words ul {
   display: inline-block;
   text-align: left;
-  list-style:none;
+  list-style: none;
 }
 
-.trios-of-suggested-words li{
+.trios-of-suggested-words li {
   text-decoration: none;
+  text-align: center;
+  align-items: center;
 }
 
-.trios-of-suggested-words h4{
+.trios-of-suggested-words h4 {
   margin-bottom: 8px;
   text-decoration: underline;
 }
@@ -33,12 +45,44 @@
 .trios-of-suggested-words td {
   text-align: center;
   height: 27px;
+  font-size: 15px;
+}
+
+.hidden-characters {
+  font-size: 13.7px; /* or any size you want */
+}
+
+.reveal-button {
+  width: 200px;
+  background-color: var(--button-background);
+  color: var(--font-color);
+  border: 2px solid black;
+  border-radius: 1.4em;
+  margin: 12px 0 12px 0;
+  padding: 8px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: center;
+  box-shadow: 0 5px #666;
+  transform: translateY(0);
+}
+
+.reveal-button:active {
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
 }
 
 @keyframes fadeInOut {
-  0% {opacity: 1;}
-  50% {opacity: 0.5;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #loading {

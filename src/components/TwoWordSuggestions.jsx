@@ -14,16 +14,14 @@ const TwoWordSuggestions = ({ lettersArraySet, cleanedList }) => {
   two.map((wordPair) => suggestionsArrayTwo.push(wordPair))
 
   const revealWord = (word) => {
-    return reveal ? (
-      word
-    ) : (
-      <span>
-        {word[0]}
-        <span className="hidden-characters">{'*'.repeat(word.length - 2)}</span>
-        {word[word.length - 1]}
-      </span>
-    )
-  }
+    if (reveal) {
+      return word;
+    }
+    if (word.length <= 2) {
+      return word; // If the word length is 2 or less, return the word as is
+    }
+    return word[0] + '*'.repeat(word.length - 2) + word[word.length - 1];
+  };
 
   const twoWord = suggestionsArrayTwo.map((words, index) => {
     return (
@@ -36,12 +34,14 @@ const TwoWordSuggestions = ({ lettersArraySet, cleanedList }) => {
 
   if (two[0] === 'no two word solutions found') {
     return (
+      <div className="two-word-solutions">
       <div className="pairs-of-suggested-words">
         <h4>Two word solutions:</h4>
         <ul>
           <li>{two[0]}</li>
         </ul>
       </div>
+    </div>
     )
   } else {
     return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 // assets
 import twoWordSolutions from '../js/twoWordSolutions.js'
+import revealWord from '../js/revealWord.js'
 
 // style
 import '../styles/twoWordSuggestions.css'
@@ -13,21 +14,12 @@ const TwoWordSuggestions = ({ lettersArraySet, cleanedList }) => {
 
   two.map((wordPair) => suggestionsArrayTwo.push(wordPair))
 
-  const revealWord = (word) => {
-    if (reveal) {
-      return word;
-    }
-    if (word.length <= 2) {
-      return word; // If the word length is 2 or less, return the word as is
-    }
-    return word[0] + '*'.repeat(word.length - 2) + word[word.length - 1];
-  };
 
   const twoWord = suggestionsArrayTwo.map((words, index) => {
     return (
       <tr key={2 + index}>
-        <td>{revealWord(words[0])}</td>
-        <td>{revealWord(words[1])}</td>
+        <td>{revealWord(words[0], reveal)}</td>
+        <td>{revealWord(words[1], reveal)}</td>
       </tr>
     )
   })

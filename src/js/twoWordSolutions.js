@@ -1,12 +1,22 @@
 const twoWordSolutions = (lettersArraySet, wordList) => {
-  let solutions = [];
-  let wordMap = new Map();
-  let wordSetList = Object.keys(wordList).map(word => ({word, set: new Set(word.split(''))}));
+  const solutions = [];
+  const lettersSet = new Set(lettersArraySet);
+  const wordSetList = [];
+  const wordMap = new Map();
 
-  // Create a map where the keys are the first letter of each word
-  // and the values are arrays of words that start with that letter
-  for (let wordObj of wordSetList) {
-    let firstLetter = wordObj.word.charAt(0);
+  // Preprocess wordList to filter and prepare word objects
+  for (let word in wordList) {
+    const wordLetters = word.split('');
+    const wordSet = new Set(wordLetters);
+
+    // Skip words that contain letters not in lettersArraySet
+    if ([...wordSet].some(letter => !lettersSet.has(letter))) continue;
+
+    const wordObj = { word, set: wordSet };
+
+    wordSetList.push(wordObj);
+
+    const firstLetter = word.charAt(0);
     if (wordMap.has(firstLetter)) {
       wordMap.get(firstLetter).push(wordObj);
     } else {
@@ -14,25 +24,25 @@ const twoWordSolutions = (lettersArraySet, wordList) => {
     }
   }
 
-  function findSolutions(firstWord, secondWord) {
-    // if (solutions.length >= 100) return;
+  // Function to check if combined words cover all letters
+  const isValidSolution = (firstWordSet, secondWordSet) => {
+    const combinedSet = new Set([...firstWordSet, ...secondWordSet]);
+    return combinedSet.size === lettersSet.size;
+  };
 
-    if (firstWord.word.slice(-1) === secondWord.word.charAt(0) &&
-        [...lettersArraySet].every(letter => firstWord.set.has(letter) || secondWord.set.has(letter))) {
-      solutions.push([firstWord.word, secondWord.word]);
-    }
-  }
-
-  for (let firstWord of wordSetList) {
-    let secondWords = wordMap.get(firstWord.word.slice(-1));
+  for (const firstWord of wordSetList) {
+    const secondWords = wordMap.get(firstWord.word.slice(-1));
     if (!secondWords) continue;
-    for (let secondWord of secondWords) {
+
+    for (const secondWord of secondWords) {
       if (secondWord === firstWord) continue;
-      findSolutions(firstWord, secondWord);
+      if (isValidSolution(firstWord.set, secondWord.set)) {
+        solutions.push([firstWord.word, secondWord.word]);
+      }
     }
   }
 
-  return solutions.length ? solutions : ["no two word solutions found"];
+  return solutions.length ? solutions : ['no two word solutions found'];
 };
 
 export default twoWordSolutions;
